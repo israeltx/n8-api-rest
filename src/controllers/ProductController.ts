@@ -8,6 +8,9 @@ class ProductController {
 
  create(request:Request, response:Response) {
   const {name, price} = request.body
+  
+  throw new Error('Exemplo de erro')
+
   response.status(201).json({name, price, user_id: request.user_id})
  }
 }
