@@ -5,14 +5,16 @@ const PORT = 3333
 
 const app = express()
 app.use(express.json())
-app.use(myMiddleware)
+// Global middleware
+// app.use(myMiddleware)
 
 app.get('/products', (request, response) => {
   const {page, limit} = request.query
   response.send(`${page} ${limit}`)
 })
 
-app.post('/products', (request, response) => {
+// Local middleware
+app.post('/products', myMiddleware, (request, response) => {
   const {name, price} = request.body
   // response.send(`${name} ${price}`)
   response.status(201).json({name, price})
