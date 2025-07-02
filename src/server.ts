@@ -12,7 +12,8 @@ app.get('/products', (request, response) => {
 
 app.post('/products', (request, response) => {
   const {name, price} = request.body
-  response.send(`${name} ${price}`)
+  // response.send(`${name} ${price}`)
+  response.status(201).json({name, price})
 })
 
 app.listen(PORT, () => console.log('server is on'))
