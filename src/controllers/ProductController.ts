@@ -12,7 +12,11 @@ class ProductController {
    
   const bodySchema = z.object({
     name: z.string(),
-    price: z.number().nullish()
+    price: z.number(
+      {
+        required_error: 'Price is required'
+      }
+    )
   })
   
   const {name, price} = bodySchema.parse(request.body)
